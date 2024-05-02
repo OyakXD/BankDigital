@@ -2,9 +2,23 @@ package src.services;
 
 public abstract class Conta implements IConta{
 
-    private int agencia;
-    private int numero;
-    public double saldo;
+    protected static final int AGENCIA_PADRAO = 1;
+    protected int agencia;
+    protected int numero;
+    private double saldo;
+
+    private static int SEQUENCIAL = 1;
+
+    public Conta() {
+        this.agencia = AGENCIA_PADRAO;
+        this.numero = SEQUENCIAL++;
+    }
+
+    public Conta(int agencia, int numero){
+        this.agencia = agencia;
+        this.numero = numero;
+        this.saldo = 0;
+    }
 
     @Override
     public void sacar(double valor) {
